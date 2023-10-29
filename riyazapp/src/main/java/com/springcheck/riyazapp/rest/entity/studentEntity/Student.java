@@ -48,6 +48,7 @@ public class Student {
     private String name;
 
     @Id
+  //  @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id",nullable=true)
     private Integer id;
 

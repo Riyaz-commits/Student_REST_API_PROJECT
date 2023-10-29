@@ -48,6 +48,28 @@ return studentService.findAll();
 
     }
 
+    @PutMapping("/studentsAdd")
+    public Student updateStudent(@RequestBody Student student)
+    {
+        System.out.println("invoked");
+        //  student.setId(0);
+        Student dbStudent= studentService.save(student);
+        return dbStudent;
+
+    }
+
+    @DeleteMapping("/students/{studentId}")
+    public String deleteStudents(@PathVariable int studentId)
+    {
+        Student student= studentService.findById(studentId);
+
+        if (student==null)
+        {
+            throw new RuntimeException("No match" + studentId);
+        }
+        studentService.deleteById(studentId);
+        return "Deleted student id is --  "+studentId;
+    }
 
 }
 
